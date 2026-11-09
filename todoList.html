@@ -5,6 +5,137 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>todoList</title>
+  <style>
+    /* 1.初始化设置 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    ol,
+    ul {
+      list-style: none;
+    }
+
+    /* 根字号响应式基准（clamp：最小值14px，理想值随屏幕2vw变化，最大值18px） */
+    html {
+      font-size: clamp(14px, 2vw, 18px);
+    }
+
+    body {
+      background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+      /* 全局字体：优先系统无衬线字体栈，input 和普通元素统一继承 */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    /* 2.整个表单样式 */
+    .container {
+      width: 18.75rem;
+      min-height: 31.25rem;
+      margin: 10vh auto;
+      box-shadow: 0 15px 25px #adb5bdff;
+      border-radius: 10px;
+      padding: 1.875rem;
+    }
+
+    /* 3.标题样式 */
+    h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: rgba(213, 79, 42, 0.895);
+      text-align: center;
+      padding: 1.25rem 0;
+    }
+
+    /* 4.添加事件部分样式 */
+    .edite-event {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 1.875rem;
+      margin-bottom: 1.875rem;
+    }
+
+    .edite-event .add-event {
+      width: 80%;
+      height: 100%;
+    }
+
+    .edite-event .add-event input {
+      border: none;
+      outline: none;
+      width: 100%;
+      height: 100%;
+      /* input 不继承 body 字体，浏览器 UA 样式给它设了 Arial，这里强制继承 */
+      font-family: inherit;
+      font-size: .875rem;
+      border-radius: 6px;
+      background-color: #fff;
+    }
+
+    .edite-event .add-btn {
+      /* 高度跟随父容器 */
+      height: 100%;
+      /* 宽高比 1:1，宽度自动等于高度 */
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #8a8a8a;
+    }
+
+    .edite-event .add-btn:hover {
+      background-color: rgba(213, 79, 42, 0.895);
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .edite-event .add-btn svg {
+      width: 60%;
+      height: 60%;
+    }
+
+    /* 5.待办事项列表样式 */
+    .todo-list .todo-list-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 2.1875rem;
+      margin-bottom: .5rem;
+    }
+
+    .todo-list .todo-list-head .todo-title {
+      font-size: 1.5rem;
+      color: rgba(213, 79, 42, 0.895)
+    }
+
+    .todo-list .todo-list-head .todo-clear button {
+      font-size: 1rem;
+      padding: 0 .3125rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      border-radius: .375rem;
+      border: none;
+      background-color: #fff;
+    }
+
+    .todo-list .todo-list-head .todo-clear button:hover {
+      background-color: rgba(213, 79, 42, 0.895);
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .todo-list .divider-line {
+      width: 100%;
+      height: 1px;
+      border: 1px solid rgba(213, 79, 42, 0.895);
+      margin-bottom: .5rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -12,12 +143,16 @@
     <h2>Todo List</h2>
     <div class="edite-event">
       <div class="add-event"><input type="text" placeholder="Add a new todo" class="input-todo"> </div>
-      <div class="add-btn">+</div>
+      <div class="add-btn"><svg class="icon" width="200px" height="200.00px" viewBox="0 0 1024 1024" version="1.1"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill="currentColor"
+            d="M853.333333 480H544V170.666667c0-17.066667-14.933333-32-32-32s-32 14.933333-32 32v309.333333H170.666667c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h309.333333V853.333333c0 17.066667 14.933333 32 32 32s32-14.933333 32-32V544H853.333333c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32z" />
+        </svg></div>
     </div>
     <div class="todo-list">
       <div class="todo-list-head">
         <h3 class="todo-title">Todo</h3>
-        <div class="todo-clear"><button class="todo-clear-btn"></button></div>
+        <div class="todo-clear"><button class="todo-clear-btn">clear</button></div>
       </div>
       <div class="divider-line"></div>
       <div class="todo-content">
