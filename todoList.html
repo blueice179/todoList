@@ -149,10 +149,13 @@
     .todo-list .todo-content ul li,
     .done-list .done-content ul li {
       width: 100%;
-      height: 1.875rem;
-      line-height: 1.875rem;
+      min-height: 1.875rem;
+      line-height: 1.5;
       font-size: 1rem;
-      padding: 0 .75rem 0 2.5rem;
+      padding: .25rem .75rem .25rem 2.5rem;
+      white-space: normal;
+      word-break: break-word;
+      overflow-wrap: anywhere;
       background-color: #d77a61ff;
       border-radius: 6px;
       position: relative;
@@ -226,6 +229,29 @@
       height: 1.25rem;
       fill: #fff;
     }
+
+    /* 6.底部按钮部分样式 */
+    .footer .control-btn {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .footer .control-btn button {
+      font-size: 1rem;
+      padding: 0 .3125rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      border-radius: .375rem;
+      border: none;
+      background-color: #fff;
+    }
+
+    .footer .control-btn button:hover {
+      background-color: rgba(213, 79, 42, 0.895);
+      cursor: pointer;
+      color: #fff;
+    }
   </style>
 </head>
 
@@ -252,8 +278,9 @@
                 version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M519.04141123 1008.31241594c-274.02802749 0-496.95253601-222.97784706-496.95253617-497.0058961 0-274.02802749 222.9245087-496.95253601 496.95253617-496.95253618 274.02802749 0 496.95253601 222.97784706 496.95253594 496.95253618 0.05333795 274.08138717-222.9245087 497.00587378-496.95253594 497.0058961z m0-963.76572963c-257.38472425 0-466.75985565 209.3751315-466.75985607 466.75983353s209.42846948 466.81319342 466.75985607 466.81319351c257.38472425 0 466.75985565-209.42846948 466.75983332-466.81319351s-209.32179369-466.75985565-466.75983332-466.75983353zM732.25730821 506.77229629v-52.11706956l-201.00012012 209.0550604v-389.09100484h-37.23411375v389.09100484l-200.89344429-209.0550604v52.11706956l219.51049008 228.36558584z" />
-              </svg></span>1. HTMLdksfjglkdsjfglksdjlfkg<span class="right-svg"><svg class="icon" width="200px"
-                height="200.00px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+              </svg></span>1. HTMLdsdfsadfsadfsdfsadfsadfsadfsadfsadfsadfssdfas<span class="right-svg"><svg class="icon"
+                width="200px" height="200.00px" viewBox="0 0 1024 1024" version="1.1"
+                xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M874.666667 241.066667h-202.666667V170.666667c0-40.533333-34.133333-74.666667-74.666667-74.666667h-170.666666c-40.533333 0-74.666667 34.133333-74.666667 74.666667v70.4H149.333333c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h53.333334V853.333333c0 40.533333 34.133333 74.666667 74.666666 74.666667h469.333334c40.533333 0 74.666667-34.133333 74.666666-74.666667V305.066667H874.666667c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32zM416 170.666667c0-6.4 4.266667-10.666667 10.666667-10.666667h170.666666c6.4 0 10.666667 4.266667 10.666667 10.666667v70.4h-192V170.666667z m341.333333 682.666666c0 6.4-4.266667 10.666667-10.666666 10.666667H277.333333c-6.4 0-10.666667-4.266667-10.666666-10.666667V309.333333h490.666666V853.333333z" />
                 <path
@@ -287,8 +314,8 @@
     </div>
     <div class="footer">
       <div class="control-btn">
-        <button class="clear-all"></button>
-        <button class="hide-done"></button>
+        <button class="clear-all">Clear All</button>
+        <button class="hide-done">Hide Done</button>
       </div>
     </div>
   </div>
