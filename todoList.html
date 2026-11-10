@@ -153,24 +153,44 @@
       cursor: pointer;
     }
 
-    .todo-list .todo-content ul li span {
-      display: inline-block;
-      width: 1.25rem;
-      height: 1.25rem;
-      position: absolute;
-      top: .3125rem;
-      left: .3125rem;
+    .todo-list .todo-content ul li .left-svg {
 
+      width: 2.5rem;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .todo-list .todo-content ul li span svg {
-      width: 100%;
-      height: 100%;
+    .todo-list .todo-content ul li .left-svg svg {
+      width: 1.25rem;
+      height: 1.25rem;
       fill: #fff;
     }
 
-    .todo-list .todo-content ul li span:hover svg {
+    .todo-list .todo-content ul li .left-svg:hover svg {
       fill: rgba(213, 79, 42, 0.895);
+    }
+
+    .todo-list .todo-content ul li .right-svg {
+      width: 2.5rem;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: rgba(213, 79, 42, 0.895);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .todo-list .todo-content ul li .right-svg svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      fill: #fff;
     }
   </style>
 </head>
@@ -194,11 +214,17 @@
       <div class="divider-line"></div>
       <div class="todo-content">
         <ul>
-          <li><span><svg class="icon" width="200px" height="200.00px" viewBox="0 0 1024 1024" version="1.1"
-                xmlns="http://www.w3.org/2000/svg">
+          <li><span class="left-svg"><svg class="icon" width="200px" height="200.00px" viewBox="0 0 1024 1024"
+                version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M519.04141123 1008.31241594c-274.02802749 0-496.95253601-222.97784706-496.95253617-497.0058961 0-274.02802749 222.9245087-496.95253601 496.95253617-496.95253618 274.02802749 0 496.95253601 222.97784706 496.95253594 496.95253618 0.05333795 274.08138717-222.9245087 497.00587378-496.95253594 497.0058961z m0-963.76572963c-257.38472425 0-466.75985565 209.3751315-466.75985607 466.75983353s209.42846948 466.81319342 466.75985607 466.81319351c257.38472425 0 466.75985565-209.42846948 466.75983332-466.81319351s-209.32179369-466.75985565-466.75983332-466.75983353zM732.25730821 506.77229629v-52.11706956l-201.00012012 209.0550604v-389.09100484h-37.23411375v389.09100484l-200.89344429-209.0550604v52.11706956l219.51049008 228.36558584z" />
-              </svg></span>1. Learn HTML</li>
+              </svg></span>1. Learn HTML<span class="right-svg"><svg class="icon" width="200px" height="200.00px"
+                viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M874.666667 241.066667h-202.666667V170.666667c0-40.533333-34.133333-74.666667-74.666667-74.666667h-170.666666c-40.533333 0-74.666667 34.133333-74.666667 74.666667v70.4H149.333333c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h53.333334V853.333333c0 40.533333 34.133333 74.666667 74.666666 74.666667h469.333334c40.533333 0 74.666667-34.133333 74.666666-74.666667V305.066667H874.666667c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32zM416 170.666667c0-6.4 4.266667-10.666667 10.666667-10.666667h170.666666c6.4 0 10.666667 4.266667 10.666667 10.666667v70.4h-192V170.666667z m341.333333 682.666666c0 6.4-4.266667 10.666667-10.666666 10.666667H277.333333c-6.4 0-10.666667-4.266667-10.666666-10.666667V309.333333h490.666666V853.333333z" />
+                <path
+                  d="M426.666667 736c17.066667 0 32-14.933333 32-32V490.666667c0-17.066667-14.933333-32-32-32s-32 14.933333-32 32v213.333333c0 17.066667 14.933333 32 32 32zM597.333333 736c17.066667 0 32-14.933333 32-32V490.666667c0-17.066667-14.933333-32-32-32s-32 14.933333-32 32v213.333333c0 17.066667 14.933333 32 32 32z" />
+              </svg></span></li>
         </ul>
       </div>
     </div>
