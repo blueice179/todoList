@@ -319,6 +319,19 @@
       </div>
     </div>
   </div>
+
+  <script>
+    // 1.获取全局变量元素
+    const addEventInput = document.querySelector('.add-event input')
+    const addBtn = document.querySelector('.edite-event .add-btn')
+
+
+    // 2.编辑事件并存入浏览器本地存储
+    addBtn.addEventListener('click', () => {
+      localStorage.setItem('event', addEventInput.value);
+      addEventInput.value = '';
+    })
+  </script>
 </body>
 
 </html>
