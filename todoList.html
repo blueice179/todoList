@@ -331,6 +331,7 @@
     const todoUl = document.querySelector('.todo-content ul');
     const doneUl = document.querySelector('.done-content ul');
     const todoClearBtn = document.querySelector('.todo-list-head .todo-clear button')
+    const doneClearBtn = document.querySelector('.done-head .done-clear button')
     // 3.共用函数
     // 3.1待办事件页面渲染
     function todoEventRender() {
@@ -429,7 +430,41 @@
         todoEventRender();
         localStorage.setItem('todoEvent', JSON.stringify(todoEventArr));
       }
+    })
+    // 7.办结事件部分
+    // 7.1删除待办事件
+    doneUl.addEventListener('click', (e) => {
+      const rightSpan = e.target.closest('.right-svg')
+      if (rightSpan) {
+        if (confirm('确定删除吗？')) {
+          const id = Number(rightSpan.dataset.id);
+          doneEventArr.splice(id, 1);
+          doneEventRender();
+          localStorage.setItem('doneEvent', JSON.stringify(doneEventArr))
+        }
+      }
+    })
+    // 7.2.办结事件转为待办事件
+    doneUl.addEventListener('click', (e) => {
+      const leftBtn = e.target.closest('.left-svg');
+      if (leftBtn) {
+        const id = Number(leftBtn.dataset.id);
+        todoEventArr.push(doneEventArr[id]);
+        todoEventRender();
+        localStorage.setItem('todoEvent', JSON.stringify(todoEventArr));
+        doneEventArr.splice(id, 1);
+        doneEventRender();
+        localStorage.setItem('doneEvent', JSON.stringify(doneEventArr));
 
+      }
+    })
+    // 7.3 删除所有办结事件
+    doneClearBtn.addEventListener('click', () => {
+      if (confirm('确定删除所有办结事件吗？')) {
+        doneEventArr = [];
+        doneEventRender();
+        localStorage.setItem('doneEvent', JSON.stringify(doneEventArr));
+      }
     })
 
   </script>
