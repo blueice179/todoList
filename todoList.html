@@ -321,13 +321,16 @@
 
   <script>
     // 1.声明全局变量
-    const todoEventArr = JSON.parse(localStorage.getItem('todoEvent')) || [];
-    const doneEventArr = JSON.parse(localStorage.getItem('doneEvent')) || [];
+    // 1.1待办事件数组
+    let todoEventArr = JSON.parse(localStorage.getItem('todoEvent')) || [];
+    // 1.2.办结事件数组
+    let doneEventArr = JSON.parse(localStorage.getItem('doneEvent')) || [];
     // 2.获取全局变量元素
     const addEventInput = document.querySelector('.add-event input');
     const addBtn = document.querySelector('.edite-event .add-btn');
     const todoUl = document.querySelector('.todo-content ul');
     const doneUl = document.querySelector('.done-content ul');
+    const todoClearBtn = document.querySelector('.todo-list-head .todo-clear button')
     // 3.共用函数
     // 3.1待办事件页面渲染
     function todoEventRender() {
@@ -419,7 +422,15 @@
 
       }
     })
+    // 6.3删除所有待办事件
+    todoClearBtn.addEventListener('click', () => {
+      if (confirm('确定删除所有待办事件吗？')) {
+        todoEventArr = [];
+        todoEventRender();
+        localStorage.setItem('todoEvent', JSON.stringify(todoEventArr));
+      }
 
+    })
 
   </script>
 </body>
