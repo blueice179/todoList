@@ -327,14 +327,14 @@
     const addBtn = document.querySelector('.edite-event .add-btn');
     const todoUl = document.querySelector('.todo-content ul');
     // 3.共用函数
-    // 3.1代表事件页面渲染
+    // 3.1待办事件页面渲染
     function todoEventRender() {
       const todoHtmlArr = todoEventArr.map(function (ele, index) {
         return ` <li><span class="left-svg"><svg class="icon" width="200px" height="200.00px" viewBox="0 0 1024 1024"
                 version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M519.04141123 1008.31241594c-274.02802749 0-496.95253601-222.97784706-496.95253617-497.0058961 0-274.02802749 222.9245087-496.95253601 496.95253617-496.95253618 274.02802749 0 496.95253601 222.97784706 496.95253594 496.95253618 0.05333795 274.08138717-222.9245087 497.00587378-496.95253594 497.0058961z m0-963.76572963c-257.38472425 0-466.75985565 209.3751315-466.75985607 466.75983353s209.42846948 466.81319342 466.75985607 466.81319351c257.38472425 0 466.75985565-209.42846948 466.75983332-466.81319351s-209.32179369-466.75985565-466.75983332-466.75983353zM732.25730821 506.77229629v-52.11706956l-201.00012012 209.0550604v-389.09100484h-37.23411375v389.09100484l-200.89344429-209.0550604v52.11706956l219.51049008 228.36558584z" />
-              </svg></span>${ele}<span class="right-svg"><svg class="icon"
+              </svg></span>${ele}<span class="right-svg " data-id="${index}"><svg class="icon"
                 width="200px" height="200.00px" viewBox="0 0 1024 1024" version="1.1"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -349,7 +349,7 @@
     // 4.初始化页面待办事件列表
     // 4.1.先行渲染待办事件部分
     todoEventRender()
-    // 4.点击添加待办事件并存入浏览器本地存储
+    // 5.点击添加待办事件，渲染更新待办事件页面并将事件存入浏览器本地
     addBtn.addEventListener('click', () => {
       // 先行判定输入待办事件是否为空，如为空弹框并返回
       const flag = addEventInput.value.trim();
@@ -366,6 +366,18 @@
       localStorage.setItem('todoEvent', JSON.stringify(todoEventArr));
       // 待办事件输入框清空
       addEventInput.value = '';
+    })
+    // 6.待办事件操作
+    // 6.1删除待办事件
+    todoUl.addEventListener('click', (e) => {
+      // 点到的是 span 内部的 svg / path，先向上找到带 data-id 的 span
+      const rightSpan = e.target.closest('.right-svg');
+      if (rightSpan) {
+        const id = Number(rightSpan.dataset.id);
+        todoEventArr.splice(id, 1);
+        todoEventRender();
+        localStorage.setItem('todoEvent', JSON.stringify(todoEventArr));
+      }
     })
   </script>
 </body>
