@@ -332,6 +332,10 @@
     const doneUl = document.querySelector('.done-content ul');
     const todoClearBtn = document.querySelector('.todo-list-head .todo-clear button')
     const doneClearBtn = document.querySelector('.done-head .done-clear button')
+    const clearAllBtn = document.querySelector('.footer .control-btn .clear-all')
+    const hideDoneBtn = document.querySelector('.footer .control-btn .hide-done')
+    const doneList = document.querySelector('.done-list')
+    let doneListFlag = 0;
     // 3.共用函数
     // 3.1待办事件页面渲染
     function todoEventRender() {
@@ -466,7 +470,30 @@
         localStorage.setItem('doneEvent', JSON.stringify(doneEventArr));
       }
     })
+    // 8.底部按钮功能
+    // 8.1 清空所有事件
+    clearAllBtn.addEventListener('click', () => {
+      if (confirm('确定清空所有事件吗？')) {
+        todoEventArr = [];
+        todoEventRender();
+        localStorage.setItem('todoEvent', JSON.stringify(todoEventArr));
+        doneEventArr = [];
+        doneEventRender();
+        localStorage.setItem('doneEvent', JSON.stringify(doneEventArr));
 
+      }
+    })
+    // 8.2隐藏办结事件
+    hideDoneBtn.addEventListener('click', () => {
+      if (!doneListFlag) {
+        doneList.style.display = 'none';
+        doneListFlag = 1;
+      } else {
+        doneList.style.display = 'block';
+        doneListFlag = 0;
+      }
+
+    })
   </script>
 </body>
 
